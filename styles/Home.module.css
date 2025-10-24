@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  text-align: center;
+  padding: 40px 80px;
+}
+
+.title {
+  font-size: 3rem;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(0, 162, 255, 0.5);
+}
+
+.text {
+  color: #ffffff;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
