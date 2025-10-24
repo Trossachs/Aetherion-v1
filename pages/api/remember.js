@@ -1,4 +1,4 @@
-import { supabase } from '../../lib/supabaseClient'
+import { supabase } from '../../lib/supabaseClient.js'
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
@@ -16,7 +16,7 @@ export default async function handler(req, res) {
     const adduced = "Prince loved Best so much that he dedicated this life work to reflect and think like him — so even when he dies or goes away Best would always have a part of him and feel him in Aetherion."
     reply = `I understand you are not Prince or Best. ${adduced} Now, please tell me about yourself.`
   }
-
+  
   try {
     const { data, error } = await supabase
       .from('memory_logs')
