@@ -19,7 +19,7 @@ export default async function handler(req, res) {
   
   try {
     const { data, error } = await supabase
-      .from('memory_logs')
+      .from('aetherion_core')
       .insert([{ user_name: user_name || 'unknown', message, response: reply }])
     if (error) throw error
     return res.status(200).json({ reply })
