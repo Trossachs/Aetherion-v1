@@ -1,11 +1,26 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import styles from '../styles/Home.module.css'
 
 export default function Home() {
+  const [introDone, setIntroDone] = useState(false)
+  const [displayText, setDisplayText] = useState('')
   const [message, setMessage] = useState('')
-  const [chat, setChat] = useState([
-    { sender: 'Aetherion', text: 'Is Best listening, Hello Prince I’m Aetherion.' }
-  ])
+  const [chat, setChat] = useState([])
   const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    const intro = "Is Best listening, Hello Prince I’m Aetherion."
+    let index = 0
+    const typing = setInterval(() => {
+      setDisplayText(intro.slice(0, index))
+      index++
+      if (index > intro.length) {
+        clearInterval(typing)
+        setTimeout(() => setIntroDone(true), 1000)
+      }
+    }, 70)
+    return () => clearInterval(typing)
+  }, [])
 
   async function sendMessage(e) {
     e.preventDefault()
@@ -30,6 +45,17 @@ export default function Home() {
     } finally {
       setLoading(false)
     }
+  }
+
+  if (!introDone) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.glass}>
+          <h1 className={styles.title}>Aetherion</h1>
+          <p className={styles.text}>{displayText}</p>
+        </div>
+      </div>
+    )
   }
 
   return (
